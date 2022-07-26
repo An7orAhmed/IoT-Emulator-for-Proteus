@@ -1,0 +1,19 @@
+1. Set URL
+	URL=<YOUR LINK>
+
+2. Add Listener
+	LISTEN=<METHOD>,<PATH>,<INTERVAL>	
+   Return: RESP=<DATA>
+
+3. HTTP GET Request
+	GET=<PATH>
+   Return: RESP=<DATA>
+
+4. HTTP POST Request
+	POST=<PATH>
+   Return: RESP=<DATA>
+
+------------------------------------
+METHOD   = GET,POST
+PATH 	   = get.php?parameters
+INTERVAL = Delay time for patch data
