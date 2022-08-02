@@ -13,6 +13,12 @@
 	POST=<PATH>
    Return: RESP=<DATA>
 
+5. SEND SMS
+	SMS=Number,MSG
+
+6. CALL
+	CALL=number
+
 ------------------------------------
 METHOD   = GET,POST
 PATH 	   = get.php?parameters

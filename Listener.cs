@@ -11,10 +11,12 @@ namespace IoT_Emulator {
         string url = "";
         string prevData = "";
         string responseStr = "";
+        bool loop;
 
-        public Listener(string _method, string _url, string _listenTo, decimal _interval) {
+        public Listener(string _method, string _url, string _listenTo, decimal _interval, bool _loop) {
             InitializeComponent();
             url = _url;
+            loop = _loop;
             MethodLbl.Text = _method;
             ListenToTxt.Text = _listenTo;
             if (_listenTo[0] != '/') ListenToTxt.Text = "/" + _listenTo;
@@ -49,6 +51,8 @@ namespace IoT_Emulator {
                             Serial.Println("RESP=" + data);
                             prevData = data;
                         }
+
+                        if(loop == false) CloseBtn.PerformClick();
                     }
                     else if (MethodLbl.Text == "POST") {
                         string[] raw = ListenToTxt.Text.Split('?');
@@ -77,6 +81,8 @@ namespace IoT_Emulator {
                                 Serial.Println("RESP=" + data);
                                 prevData = data;
                             }
+
+                            if (loop == false) CloseBtn.PerformClick();
                         }
                     }
                 });     

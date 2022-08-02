@@ -22,9 +22,8 @@ namespace IoT_Emulator {
         private void Form1_Load(object sender, EventArgs e) {
             CheckForIllegalCrossThreadCalls = false;
             PostCTCombo.SelectedIndex = 0;
-            Tabs.TabPages.RemoveByKey("GSMTab");
+            //Tabs.TabPages.RemoveByKey("GSMTab");
             Serial.Port.DataReceived += DataReceived;
-            Serial.Port.DataReceived += GSMReceived;
             UpdateCommandList();
             
             if (!Properties.Settings.Default.isDriverInstalled) {
@@ -37,10 +36,6 @@ namespace IoT_Emulator {
                     MessageBox.Show(ex.Message);
                 }
             }
-        }
-
-        private void GSMReceived(object sender, SerialDataReceivedEventArgs e) {
-            
         }
 
         private void DataReceived(object sender, SerialDataReceivedEventArgs e) {
@@ -68,7 +63,7 @@ namespace IoT_Emulator {
                         return;
                     }
                     ListenerList.BeginInvoke(new Action(() => {
-                        ListenerList.Controls.Add(new Listener(val[0], URLTxt.Text, val[1], decimal.Parse(val[2])));
+                        ListenerList.Controls.Add(new Listener(val[0], URLTxt.Text, val[1], decimal.Parse(val[2]), LoopCheck.Checked));
                     }));
                 }
             }
@@ -123,6 +118,16 @@ namespace IoT_Emulator {
                 catch (Exception ex) {
                     MessageBox.Show(ex.Message);
                 }
+            }
+            else if (cmd.IndexOf("SMS=") != -1) {
+                cmd = cmd.Remove(0, 4);
+                string[] sms = cmd.Split(',');
+                PhonePrint(Color.Blue, $"SMS RECEIVED\nNumber: {sms[0]}\nMessage: {sms[1]}");
+            }
+            else if (cmd.IndexOf("CALL=") != -1) {
+                cmd = cmd.Remove(0, 5);
+                string[] call = cmd.Split('#');
+                PhonePrint(Color.Red, $"CALL FROM\nNumber: {call[0]}");
             }
         }
 
@@ -186,7 +191,7 @@ namespace IoT_Emulator {
             }
             string method = radioGET.Checked ? "GET" : "POST";
             ListenerList.BeginInvoke(new Action(() => {
-                ListenerList.Controls.Add(new Listener(method, URLTxt.Text, ListenToTxt.Text, ListenInterval.Value));
+                ListenerList.Controls.Add(new Listener(method, URLTxt.Text, ListenToTxt.Text, ListenInterval.Value, LoopCheck.Checked));
             }));
         }
 
@@ -200,7 +205,7 @@ namespace IoT_Emulator {
                 return;
             }
             if(Properties.Settings.Default.savedCmd == null) {
-                Properties.Settings.Default.savedCmd = new System.Collections.Specialized.StringCollection();
+                Properties.Settings.Default.savedCmd = new StringCollection();
             }
             Properties.Settings.Default.savedCmd.Add(AddCmdTxt.Text);
             Properties.Settings.Default.Save();
@@ -276,7 +281,7 @@ namespace IoT_Emulator {
                 MessageBox.Show("Please enter phone number!");
                 return;
             }
-            PhonePrint(Color.Red, $"CALLING\nNumber: {GSMNumberTxt.Text}");
+            PhonePrint(Color.Red, $"CALL FROM\nNumber: {GSMNumberTxt.Text}");
         }
 
         private void GSMSMSBtn_Click(object sender, EventArgs e) {
@@ -284,7 +289,7 @@ namespace IoT_Emulator {
                 MessageBox.Show("Please enter phone number!");
                 return;
             }
-            PhonePrint(Color.Blue, $"SENDING SMS\nNumber: {GSMNumberTxt.Text}\nMessage: {GSMMSGTxt.Text}");
+            PhonePrint(Color.Blue, $"SMS RECEIVED\nNumber: {GSMNumberTxt.Text}\nMessage: {GSMMSGTxt.Text}");
         }
 
         private void PhonePrint(Color color, String txt) {

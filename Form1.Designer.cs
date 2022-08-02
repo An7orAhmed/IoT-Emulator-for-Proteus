@@ -69,14 +69,15 @@
             this.Tabs = new System.Windows.Forms.TabControl();
             this.GSMTab = new System.Windows.Forms.TabPage();
             this.GSMPanel = new System.Windows.Forms.Panel();
-            this.PhoneTerminalTxt = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.GSMNumberTxt = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.GSMSMSBtn = new System.Windows.Forms.Button();
+            this.GSMCallBtn = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.GSMMSGTxt = new System.Windows.Forms.TextBox();
-            this.GSMCallBtn = new System.Windows.Forms.Button();
-            this.GSMSMSBtn = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.GSMNumberTxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.PhoneTerminalTxt = new System.Windows.Forms.RichTextBox();
+            this.LoopCheck = new System.Windows.Forms.CheckBox();
             this.SettingsTab.SuspendLayout();
             this.SettingPanel.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -161,6 +162,7 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox3.Controls.Add(this.LoopCheck);
             this.groupBox3.Controls.Add(this.ListenerList);
             this.groupBox3.Controls.Add(this.ListenAddBtn);
             this.groupBox3.Controls.Add(this.label5);
@@ -200,7 +202,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(516, 33);
+            this.label5.Location = new System.Drawing.Point(545, 33);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 20);
             this.label5.TabIndex = 3;
@@ -217,7 +219,7 @@
             // 
             // ListenInterval
             // 
-            this.ListenInterval.Location = new System.Drawing.Point(587, 31);
+            this.ListenInterval.Location = new System.Drawing.Point(616, 31);
             this.ListenInterval.Maximum = new decimal(new int[] {
             3600,
             0,
@@ -229,7 +231,7 @@
             0,
             0});
             this.ListenInterval.Name = "ListenInterval";
-            this.ListenInterval.Size = new System.Drawing.Size(111, 26);
+            this.ListenInterval.Size = new System.Drawing.Size(82, 26);
             this.ListenInterval.TabIndex = 1;
             this.ListenInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ListenInterval.Value = new decimal(new int[] {
@@ -242,7 +244,7 @@
             // 
             this.ListenToTxt.Location = new System.Drawing.Point(95, 30);
             this.ListenToTxt.Name = "ListenToTxt";
-            this.ListenToTxt.Size = new System.Drawing.Size(405, 26);
+            this.ListenToTxt.Size = new System.Drawing.Size(369, 26);
             this.ListenToTxt.TabIndex = 0;
             // 
             // groupBox2
@@ -558,7 +560,7 @@
             this.GSMTab.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GSMTab.Size = new System.Drawing.Size(856, 568);
             this.GSMTab.TabIndex = 2;
-            this.GSMTab.Text = "GSM Module";
+            this.GSMTab.Text = "GSM Tools";
             // 
             // GSMPanel
             // 
@@ -578,64 +580,19 @@
             this.GSMPanel.Size = new System.Drawing.Size(840, 552);
             this.GSMPanel.TabIndex = 0;
             // 
-            // PhoneTerminalTxt
+            // GSMSMSBtn
             // 
-            this.PhoneTerminalTxt.BackColor = System.Drawing.Color.White;
-            this.PhoneTerminalTxt.Location = new System.Drawing.Point(17, 44);
-            this.PhoneTerminalTxt.Name = "PhoneTerminalTxt";
-            this.PhoneTerminalTxt.ReadOnly = true;
-            this.PhoneTerminalTxt.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.PhoneTerminalTxt.ShowSelectionMargin = true;
-            this.PhoneTerminalTxt.Size = new System.Drawing.Size(806, 266);
-            this.PhoneTerminalTxt.TabIndex = 1;
-            this.PhoneTerminalTxt.Text = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Mobile Phone Display:";
-            // 
-            // GSMNumberTxt
-            // 
-            this.GSMNumberTxt.Location = new System.Drawing.Point(563, 325);
-            this.GSMNumberTxt.Name = "GSMNumberTxt";
-            this.GSMNumberTxt.Size = new System.Drawing.Size(260, 26);
-            this.GSMNumberTxt.TabIndex = 3;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(438, 328);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(119, 20);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Phone Number:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(438, 369);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(118, 20);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Message Body:";
-            // 
-            // GSMMSGTxt
-            // 
-            this.GSMMSGTxt.Location = new System.Drawing.Point(563, 366);
-            this.GSMMSGTxt.MaxLength = 160;
-            this.GSMMSGTxt.Multiline = true;
-            this.GSMMSGTxt.Name = "GSMMSGTxt";
-            this.GSMMSGTxt.Size = new System.Drawing.Size(260, 112);
-            this.GSMMSGTxt.TabIndex = 5;
+            this.GSMSMSBtn.Location = new System.Drawing.Point(565, 256);
+            this.GSMSMSBtn.Name = "GSMSMSBtn";
+            this.GSMSMSBtn.Size = new System.Drawing.Size(143, 47);
+            this.GSMSMSBtn.TabIndex = 8;
+            this.GSMSMSBtn.Text = "Send SMS";
+            this.GSMSMSBtn.UseVisualStyleBackColor = true;
+            this.GSMSMSBtn.Click += new System.EventHandler(this.GSMSMSBtn_Click);
             // 
             // GSMCallBtn
             // 
-            this.GSMCallBtn.Location = new System.Drawing.Point(721, 493);
+            this.GSMCallBtn.Location = new System.Drawing.Point(723, 256);
             this.GSMCallBtn.Name = "GSMCallBtn";
             this.GSMCallBtn.Size = new System.Drawing.Size(102, 47);
             this.GSMCallBtn.TabIndex = 7;
@@ -643,15 +600,71 @@
             this.GSMCallBtn.UseVisualStyleBackColor = true;
             this.GSMCallBtn.Click += new System.EventHandler(this.GSMCallBtn_Click);
             // 
-            // GSMSMSBtn
+            // label9
             // 
-            this.GSMSMSBtn.Location = new System.Drawing.Point(563, 493);
-            this.GSMSMSBtn.Name = "GSMSMSBtn";
-            this.GSMSMSBtn.Size = new System.Drawing.Size(143, 47);
-            this.GSMSMSBtn.TabIndex = 8;
-            this.GSMSMSBtn.Text = "Send SMS";
-            this.GSMSMSBtn.UseVisualStyleBackColor = true;
-            this.GSMSMSBtn.Click += new System.EventHandler(this.GSMSMSBtn_Click);
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(454, 101);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(118, 20);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Message Body:";
+            // 
+            // GSMMSGTxt
+            // 
+            this.GSMMSGTxt.Location = new System.Drawing.Point(457, 127);
+            this.GSMMSGTxt.MaxLength = 160;
+            this.GSMMSGTxt.Multiline = true;
+            this.GSMMSGTxt.Name = "GSMMSGTxt";
+            this.GSMMSGTxt.Size = new System.Drawing.Size(368, 114);
+            this.GSMMSGTxt.TabIndex = 5;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(453, 44);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(119, 20);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Phone Number:";
+            // 
+            // GSMNumberTxt
+            // 
+            this.GSMNumberTxt.Location = new System.Drawing.Point(457, 70);
+            this.GSMNumberTxt.Name = "GSMNumberTxt";
+            this.GSMNumberTxt.Size = new System.Drawing.Size(368, 26);
+            this.GSMNumberTxt.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(164, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Mobile Phone Display:";
+            // 
+            // PhoneTerminalTxt
+            // 
+            this.PhoneTerminalTxt.BackColor = System.Drawing.Color.White;
+            this.PhoneTerminalTxt.Location = new System.Drawing.Point(17, 44);
+            this.PhoneTerminalTxt.Name = "PhoneTerminalTxt";
+            this.PhoneTerminalTxt.ReadOnly = true;
+            this.PhoneTerminalTxt.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.PhoneTerminalTxt.Size = new System.Drawing.Size(420, 493);
+            this.PhoneTerminalTxt.TabIndex = 1;
+            this.PhoneTerminalTxt.Text = "";
+            // 
+            // LoopCheck
+            // 
+            this.LoopCheck.AutoSize = true;
+            this.LoopCheck.Checked = true;
+            this.LoopCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.LoopCheck.Location = new System.Drawing.Point(475, 32);
+            this.LoopCheck.Name = "LoopCheck";
+            this.LoopCheck.Size = new System.Drawing.Size(64, 24);
+            this.LoopCheck.TabIndex = 6;
+            this.LoopCheck.Text = "Loop";
+            this.LoopCheck.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -738,6 +751,7 @@
         private System.Windows.Forms.TextBox GSMMSGTxt;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox GSMNumberTxt;
+        private System.Windows.Forms.CheckBox LoopCheck;
     }
 }
 
